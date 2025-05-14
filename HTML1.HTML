@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>车间5S问题跟踪表</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #f8fafc;
+        }
+        .card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .status-pending {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+        .category-badge {
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .scroll-container {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="scroll-container">
+    <div class="max-w-4xl mx-auto px-4 py-8">
+        <!-- 页眉 -->
+        <div class="text-center mb-10">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-2">车间5S问题跟踪表</h1>
+            <p class="text-gray-600 max-w-2xl mx-auto">全面记录并跟踪CNC车间及周边区域的5S管理问题</p>
+            <div class="mt-6 flex flex-wrap justify-center gap-3">
+                <div class="bg-blue-50 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">共20项问题</div>
+                <div class="bg-amber-50 text-amber-800 px-4 py-2 rounded-full text-sm font-medium">全部待处理</div>
+                <div class="bg-gray-100 text-gray-800 px-4 py-2 rounded-full text-sm font-medium">最后更新: 2025-05-13</div>
+            </div>
+        </div>
+
+        <!-- 问题分类统计 -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                <div class="text-gray-500 text-sm mb-1">卫生问题</div>
+                <div class="text-2xl font-bold text-gray-800">8</div>
+            </div>
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                <div class="text-gray-500 text-sm mb-1">物料管理</div>
+                <div class="text-2xl font-bold text-gray-800">5</div>
+            </div>
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                <div class="text-gray-500 text-sm mb-1">设备维护</div>
+                <div class="text-2xl font-bold text-gray-800">4</div>
+            </div>
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                <div class="text-gray-500 text-sm mb-1">人员规范</div>
+                <div class="text-2xl font-bold text-gray-800">3</div>
+            </div>
+        </div>
+
+        <!-- 问题列表 -->
+        <div class="space-y-4 mb-12">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                <i class="fas fa-list-check text-blue-500 mr-2"></i> 问题清单
+            </h2>
+            
+            <!-- 问题卡片 - 示例1 -->
+            <div class="card bg-white p-5 rounded-xl shadow-sm border border-gray-100">
+                <div class="flex flex-col md:flex-row md:items-start md:justify-between">
+                    <div class="flex-1">
+                        <div class="flex items-start mb-3">
+                            <span class="bg-blue-100 text-blue-800 font-medium rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3">1</span>
+                            <h3 class="text-lg font-medium text-gray-800">CNC北面车间地面脏污未打扫整理</h3>
+                        </div>
+                        <div class="ml-9 space-y-2">
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-map-marker-alt text-gray-400 mr-2 w-4"></i>
+                                <span>CNC北面车间</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-tag text-gray-400 mr-2 w-4"></i>
+                                <span class="bg-red-100 text-red-800 category-badge">卫生问题</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-3 md:mt-0 md:ml-4">
+                        <span class="status-pending px-3 py-1 rounded-full text-sm font-medium inline-flex items-center">
+                            <i class="fas fa-clock mr-1"></i> 待处理
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 问题卡片 - 示例2 -->
+            <div class="card bg-white p-5 rounded-xl shadow-sm border border-gray-100">
+                <div class="flex flex-col md:flex-row md:items-start md:justify-between">
+                    <div class="flex-1">
+                        <div class="flex items-start mb-3">
+                            <span class="bg-blue-100 text-blue-800 font-medium rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3">2</span>
+                            <h3 class="text-lg font-medium text-gray-800">CNC北车间测量室放置资料房间内有人抽烟地面烟头纸屑乱丢</h3>
+                        </div>
+                        <div class="ml-9 space-y-2">
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-map-marker-alt text-gray-400 mr-2 w-4"></i>
+                                <span>CNC北车间测量室</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-tag text-gray-400 mr-2 w-4"></i>
+                                <span class="bg-red-100 text-red-800 category-badge">卫生问题</span>
+                                <span class="bg-purple-100 text-purple-800 category-badge ml-2">安全隐患</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-3 md:mt-0 md:ml-4">
+                        <span class="status-pending px-3 py-1 rounded-full text-sm font-medium inline-flex items-center">
+                            <i class="fas fa-clock mr-1"></i> 待处理
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 问题卡片 - 示例3 -->
+            <div class="card bg-white p-5 rounded-xl shadow-sm border border-gray-100">
+                <div class="flex flex-col md:flex-row md:items-start md:justify-between">
+                    <div class="flex-1">
+                        <div class="flex items-start mb-3">
+                            <span class="bg-blue-100 text-blue-800 font-medium rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3">3</span>
+                            <h3 class="text-lg font-medium text-gray-800">CNC机台点检表不统一部分机台未点检（切削液浓度点检表/机台点检表/治具保养记录表）</h3>
+                        </div>
+                        <div class="ml-9 space-y-2">
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-map-marker-alt text-gray-400 mr-2 w-4"></i>
+                                <span>CNC车间</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-tag text-gray-400 mr-2 w-4"></i>
+                                <span class="bg-yellow-100 text-yellow-800 category-badge">设备维护</span>
+                                <span class="bg-blue-100 text-blue-800 category-badge ml-2">标准化</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-3 md:mt-0 md:ml-4">
+                        <span class="status-pending px-3 py-1 rounded-full text-sm font-medium inline-flex items-center">
+                            <i class="fas fa-clock mr-1"></i> 待处理
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 问题卡片 - 示例4 -->
+            <div class="card bg-white p-5 rounded-xl shadow-sm border border-gray-100">
+                <div class="flex flex-col md:flex-row md:items-start md:justify-between">
+                    <div class="flex-1">
+                        <div class="flex items-start mb-3">
+                            <span class="bg-blue-100 text-blue-800 font-medium rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3">11</span>
+                            <h3 class="text-lg font-medium text-gray-800">车间部门人员静电帽未做颜色区分，静电衣静电帽未穿戴整齐</h3>
+                        </div>
+                        <div class="ml-9 space-y-2">
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-map-marker-alt text-gray-400 mr-2 w-4"></i>
+                                <span>全车间</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-tag text-gray-400 mr-2 w-4"></i>
+                                <span class="bg-green-100 text-green-800 category-badge">人员规范</span>
+                                <span class="bg-purple-100 text-purple-800 category-badge ml-2">安全隐患</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-3 md:mt-0 md:ml-4">
+                        <span class="status-pending px-3 py-1 rounded-full text-sm font-medium inline-flex items-center">
+                            <i class="fas fa-clock mr-1"></i> 待处理
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 问题卡片 - 示例5 -->
+            <div class="card bg-white p-5 rounded-xl shadow-sm border border-gray-100">
+                <div class="flex flex-col md:flex-row md:items-start md:justify-between">
+                    <div class="flex-1">
+                        <div class="flex items-start mb-3">
+                            <span class="bg-blue-100 text-blue-800 font-medium rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3">17</span>
+                            <h3 class="text-lg font-medium text-gray-800">车间内空气中油雾严重</h3>
+                        </div>
+                        <div class="ml-9 space-y-2">
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-map-marker-alt text-gray-400 mr-2 w-4"></i>
+                                <span>全车间</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-tag text-gray-400 mr-2 w-4"></i>
+                                <span class="bg-red-100 text-red-800 category-badge">卫生问题</span>
+                                <span class="bg-purple-100 text-purple-800 category-badge ml-2">安全隐患</span>
+                                <span class="bg-yellow-100 text-yellow-800 category-badge ml-2">设备维护</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-3 md:mt-0 md:ml-4">
+                        <span class="status-pending px-3 py-1 rounded-full text-sm font-medium inline-flex items-center">
+                            <i class="fas fa-clock mr-1"></i> 待处理
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 区域分布 -->
+        <div class="mb-12">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                <i class="fas fa-map-marked-alt text-blue-500 mr-2"></i> 问题区域分布
+            </h2>
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="flex items-center">
+                        <div class="bg-blue-100 text-blue-800 rounded-lg p-3 mr-3">
+                            <i class="fas fa-industry text-lg"></i>
+                        </div>
+                        <div>
+                            <div class="text-gray-500 text-sm">CNC车间</div>
+                            <div class="font-medium text-gray-800">12项问题</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="bg-green-100 text-green-800 rounded-lg p-3 mr-3">
+                            <i class="fas fa-flask text-lg"></i>
+                        </div>
+                        <div>
+                            <div class="text-gray-500 text-sm">测量室</div>
+                            <div class="font-medium text-gray-800">3项问题</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="bg-purple-100 text-purple-800 rounded-lg p-3 mr-3">
+                            <i class="fas fa-warehouse text-lg"></i>
+                        </div>
+                        <div>
+                            <div class="text-gray-500 text-sm">后处理车间</div>
+                            <div class="font-medium text-gray-800">2项问题</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="bg-yellow-100 text-yellow-800 rounded-lg p-3 mr-3">
+                            <i class="fas fa-restroom text-lg"></i>
+                        </div>
+                        <div>
+                            <div class="text-gray-500 text-sm">公共区域</div>
+                            <div class="font-medium text-gray-800">3项问题</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 问题严重程度 -->
+        <div class="mb-12">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                <i class="fas fa-exclamation-triangle text-blue-500 mr-2"></i> 问题严重程度
+            </h2>
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="border-l-4 border-red-500 pl-4">
+                        <div class="text-gray-500 text-sm mb-1">安全隐患</div>
+                        <div class="text-2xl font-bold text-gray-800">5项</div>
+                        <div class="text-gray-500 text-sm mt-2">如消防栓堵塞、油雾严重等</div>
+                    </div>
+                    <div class="border-l-4 border-amber-500 pl-4">
+                        <div class="text-gray-500 text-sm mb-1">卫生问题</div>
+                        <div class="text-2xl font-bold text-gray-800">8项</div>
+                        <div class="text-gray-500 text-sm mt-2">如地面脏污、物品乱放等</div>
+                    </div>
+                    <div class="border-l-4 border-blue-500 pl-4">
+                        <div class="text-gray-500 text-sm mb-1">规范问题</div>
+                        <div class="text-2xl font-bold text-gray-800">7项</div>
+                        <div class="text-gray-500 text-sm mt-2">如标识缺失、穿戴不规范等</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 所有问题列表 -->
+        <div class="mb-12">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                <i class="fas fa-tasks text-blue-500 mr-2"></i> 完整问题清单
+            </h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">序号</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">问题点</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">分类</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">状态</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
+                            <td class="px-4 py-3 text-sm text-gray-700">CNC北面车间地面脏污未打扫整理</td>
+                            <td class="px-4 py-3 whitespace-nowrap"><span class="bg-red-100 text-red-800 category-badge">卫生</span></td>
+                            <td class="px-4 py-3 whitespace-nowrap"><span class="status-pending px-2 py-1 rounded-full text-xs">待处理</span></td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">2</td>
+                            <td class="px-4 py-3 text-sm text-gray-700">CNC北车间测量室放置资料房间内有人抽烟地面烟头纸屑乱丢</td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <span class="bg-red-100 text-red-800 category-badge">卫生</span>
+                                <span class="bg-purple-100 text-purple-800 category-badge ml-1">安全</span>
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap"><span class="status-pending px-2 py-1 rounded-full text-xs">待处理</span></td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">3</td>
+                            <td class="px-4 py-3 text-sm text-gray-700">CNC机台点检表不统一部分机台未点检</td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <span class="bg-yellow-100 text-yellow-800 category-badge">设备</span>
+                                <span class="bg-blue-100 text-blue-800 category-badge ml-1">标准</span>
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap"><span class="status-pending px-2 py-1 rounded-full text-xs">待处理</span></td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">4</td>
+                            <td class="px-4 py-3 text-sm text-gray-700">现场物料料盒放置地面无物料桌</td>
+                            <td class="px-4 py-3 whitespace-nowrap"><span class="bg-indigo-100 text-indigo-800 category-badge">物料</span></td>
+                            <td class="px-4 py-3 whitespace-nowrap"><span class="status-pending px-2 py-1 rounded-full text-xs">待处理</span></td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">5</td>
+                            <td class="px-4 py-3 text-sm text-gray-700">物料无状态标识卡，物料流转单</td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <span class="bg-indigo-100 text-indigo-800 category-badge">物料</span>
+                                <span class="bg-blue-100 text-blue-800 category-badge ml-1">标准</span>
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap"><span class="status-pending px-2 py-1 rounded-full text-xs">待处理</span></td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">6</td>
+                            <td class="px-4 py-3 text-sm text-gray-700">功能房无门牌无责任人信息牌</td>
+                            <td class="px-4 py-3 whitespace-nowrap"><span class="bg-blue-100 text-blue-800 category-badge">标准</span></td>
+                            <td class="px-4 py-3 whitespace-nowrap"><span class="status-pending px-2 py-1 rounded-full text-xs">待处理</span></td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">7</td>
+                            <td class="px-4 py-3 text-sm text-gray-700">铝屑房，切削油房间卫生差漏油,5S打扫工具乱丢</td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <span class="bg-red-100 text-red-800 category-badge">卫生</span>
+                                <span class="bg-purple-100 text-purple-800 category-badge ml-1">安全</span>
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap"><span class="status-pending px-2 py-1 rounded-full text-xs">待处理</span></td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">8</td>
+                            <td class="px-4 py-3 text-sm text-gray-700">CN机台后气管乱，扎带头未剪掉，配电箱上脏污及吸塑盘乱放</td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <span class="bg-yellow-100 text-yellow-800 category-badge">设备</span>
+                                <span class="bg-red-100 text-red-800 category-badge ml-1">卫生</span>
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap"><span class="status-pending px-2 py-1 rounded-full text-xs">待处理</span></td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">9</td>
+                            <td class="px-4 py-3 text-sm text-gray-700">消防栓内放置物料/纸屑/吸塑盘/抹布/塑料袋</td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <span class="bg-purple-100 text-purple-800 category-badge">安全</span>
+                                <span class="bg-red-100 text-red-800 category-badge ml-1">卫生</span>
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap"><span class="status-pending px-2 py-1 rounded-full text-xs">待处理</span></td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">10</td>
+                            <td class="px-4 py-3 text-sm text-gray-700">机台后油箱内乱丢槟榔渣/口香糖/纸屑</td>
+                            <td class="px-4 py-3 whitespace-nowrap"><span class="bg-red-100 text-red-800 category-badge">卫生</span></td>
+                            <td class="px-4 py-3 whitespace-nowrap"><span class="status-pending px-2 py-1 rounded-full text-xs">待处理</span></td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">11</td>
+                            <td class="px-4 py-3 text-sm text-gray-700">车间部门人员静电帽未做颜色区分，静电衣静电帽未穿戴整齐</td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <span class="bg-green-100 text-green-800 category-badge">人员</span>
+                                <span class="bg-purple-100 text-purple-800 category-badge ml-1">安全</span>
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap"><span class="status-pending px-2 py-1 rounded-full text-xs">待处理</span></td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">12</td>
+                            <td class="px-4 py-3 text-sm text-gray-700">劳保用品耳塞口罩部分人员未佩戴</td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <span class="bg-green-100 text-green-800 category-badge">人员</span>
+                                <span class="bg-purple-100 text-purple-800 category-badge ml-1">安全</span>
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap"><span class="status-pending px-2 py-1 rounded-full text-xs">待处理</span></td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">13</td>
+                            <td class="px-4 py-3 text-sm text-gray-700">卫生间内有烟头槟榔渣</td>
+                            <td class="px-4 py-3 whitespace-nowrap"><span class="bg-red-100 text-red-800 category-badge">卫生</span></td>
+                            <td class="px-4 py-3 whitespace-nowrap"><span class="status-pending px-2 py-1 rounded-full text-xs">待处理</span></td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">14</td>
+                            <td class="px-4 py-3 text-sm text-gray-700">GND二夹地面水/油污严重</td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <span class="bg-red-100 text-red-800 category-badge">卫生</span>
+                                <span class="bg-purple-100 text-purple-800 category-badge ml-1">安全</span>
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap"><span class="status-pending px-2 py-1 rounded-full text-xs">待处理</span></td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">15</td>
+                            <td class="px-4 py-3 text-sm text-gray-700">机台后过道油污严重无人打扫</td>
+                            <td class="px-4 py-3 whitespace-nowrap"><span class="bg-red-100 text-red-800 category-badge">卫生</span></td>
+                            <td class="px-4 py-3 whitespace-nowrap"><span class="status-pending px-2 py-1 rounded-full text-xs">待处理</span></td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">16</td>
+                            <td class="px-4 py-3 text-sm text-gray-700">茶水间放置饮料瓶</td>
+                            <td class="px-4 py-3 whitespace-nowrap"><span class="bg-red-100 text-red-800 category-badge">卫生</span></td>
+                            <td class="px-4 py-3 whitespace-nowrap"><span class="status-pending px-2 py-1 rounded-full text-xs">待处理</span></td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">17</td>
+                            <td class="px-4 py-3 text-sm text-gray-700">车间内空气中油雾严重</td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <span class="bg-red-100 text-red-800 category-badge">卫生</span>
+                                <span class="bg-purple-100 text-purple-800 category-badge ml-1">安全</span>
+                                <span class="bg-yellow-100 text-yellow-800 category-badge ml-1">设备</span>
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap"><span class="status-pending px-2 py-1 rounded-full text-xs">待处理</span></td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">18</td>
+                            <td class="px-4 py-3 text-sm text-gray-700">量测室门窗玻璃脏污</td>
+                            <td class="px-4 py-3 whitespace-nowrap"><span class="bg-red-100 text-red-800 category-badge">卫生</span></td>
+                            <td class="px-4 py-3 whitespace-nowrap"><span class="status-pending px-2 py-1 rounded-full text-xs">待处理</span></td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">19</td>
+                            <td class="px-4 py-3 text-sm text-gray-700">后处理车间物品堆放凌乱,地面积水严重,药剂及滚研石乱放</td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <span class="bg-red-100 text-red-800 category-badge">卫生</span>
+                                <span class="bg-purple-100 text-purple-800 category-badge ml-1">安全</span>
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap"><span class="status-pending px-2 py-1 rounded-full text-xs">待处理</span></td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">20</td>
+                            <td class="px-4 py-3 text-sm text-gray-700">AOI房间货架上物品摆放凌乱,物料无标识,纸箱堆放地面</td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <span class="bg-red-100 text-red-800 category-badge">卫生</span>
+                                <span class="bg-indigo-100 text-indigo-800 category-badge ml-1">物料</span>
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap"><span class="status-pending px-2 py-1 rounded-full text-xs">待处理</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <div class="text-center text-sm text-gray-500 pt-6 border-t border-gray-200">
+            <p>ExcelPro</p>
+            <p class="mt-1">最后更新时间为2025-05-13 ，星期二</p>
+            <p class="mt-1">ExcelPro</p>
+        </div>
+    </div>
+
+    <script>
+        // 平滑滚动效果
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
